@@ -1,18 +1,170 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Destek Chatbot</title>
-    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  </head>
-  <body>
-    <h1>Hoş geldin!</h1>
-    <p>Bu sayfa bulut tabanlı chatbot projesi için hazırlanmıştır.</p>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Basit Alışveriş Sitesi</title>
+  <style>
+    /* Genel stil */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0; padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
 
-    <df-messenger
-      intent="WELCOME"
-      chat-title="DestekBot"
-      agent-id="823738072674"
-      language-code="tr"
-    ></df-messenger>
-  </body>
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .product-info {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-name {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: #0077cc;
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      color: #666;
+      flex-grow: 1;
+      margin-bottom: 12px;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #2a9d8f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 0;
+      color: #777;
+      font-size: 0.9rem;
+      border-top: 1px solid #ddd;
+      background: #fff;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      z-index: 5;
+    }
+
+    /* Dialogflow Messenger pozisyonunu garantiye al */
+    df-messenger {
+      --df-messenger-bot-message: #0077cc;
+      --df-messenger-button-titlebar-color: #0077cc;
+      --df-messenger-font-color: #333;
+      --df-messenger-send-icon: #2a9d8f;
+      --df-messenger-user-message: #2a9d8f;
+      position: fixed !important;
+      bottom: 90px;
+      right: 20px;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  Sinan’ın Alışveriş Dünyası
+</header>
+
+<main>
+  <div class="product-card">
+    <img src="https://picsum.photos/id/101/400/300" alt="Ürün 1" class="product-image" />
+    <div class="product-info">
+      <div class="product-name">Spor Ayakkabı</div>
+      <div class="product-desc">Rahat ve şık tasarım, günlük kullanım için ideal.</div>
+      <div class="product-price">₺299</div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="https://picsum.photos/id/102/400/300" alt="Ürün 2" class="product-image" />
+    <div class="product-info">
+      <div class="product-name">Klasik Saat</div>
+      <div class="product-desc">Zarif tasarım, her kıyafetle uyumlu.</div>
+      <div class="product-price">₺499</div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="https://picsum.photos/id/103/400/300" alt="Ürün 3" class="product-image" />
+    <div class="product-info">
+      <div class="product-name">Sırt Çantası</div>
+      <div class="product-desc">Dayanıklı ve geniş, seyahat dostu.</div>
+      <div class="product-price">₺150</div>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="https://picsum.photos/id/104/400/300" alt="Ürün 4" class="product-image" />
+    <div class="product-info">
+      <div class="product-name">Bluetooth Kulaklık</div>
+      <div class="product-desc">Kablosuz, yüksek ses kalitesi.</div>
+      <div class="product-price">₺299</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2025 Sinan Akcan - Demo Alışveriş Sitesi
+</footer>
+
+<!-- Dialogflow Messenger embed -->
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="DestekChatBot"
+  agent-id="c9cbfec5-58de-412f-b642-08e5c4c347e0"
+  language-code="tr"
+></df-messenger>
+
+</body>
 </html>
